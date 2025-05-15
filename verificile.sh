@@ -328,7 +328,7 @@ fix_anomaly_interactively() {
         echo -e "${CYAN}Expected extension(s):${RESET} ${GREEN}$expected_exts${RESET}"
         echo -e "${MAGENTA}[FORENSIC MODE] No file modifications allowed${RESET}\n"
         return 1
-    }
+    fi
     
     # Get the first expected extension (if multiple are provided)
     local primary_ext
