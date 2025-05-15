@@ -37,3 +37,69 @@ mkdir -p ~/.local/bin
 cp verificile.sh ~/.local/bin/
 chmod +x ~/.local/bin/verificile.sh
 ```
+
+## Usage
+
+```bash
+verificile.sh [OPTIONS] <directory> [<directory>...]
+```
+
+### Options
+
+- `-h, --help`        - Display help information
+- `-i, --interactive` - Interactive mode: fix anomalies as they're found
+- `-n, --no-color`    - Disable colored output (for basic terminals)
+- `-r, --recursive`   - Recursively check subdirectories
+- `-f, --forensic`    - Forensic mode: don't write any files (implies -v)
+- `-v, --verbose`     - Output anomalies to console when found (fixed-width format)
+- `--debug`           - Enable debug mode to show detailed processing steps
+
+### Examples
+
+Basic usage:
+```bash
+./verificile.sh ~/Downloads
+```
+
+Interactive mode with recursive scanning:
+```bash
+./verificile.sh -i -r ~/Photos
+```
+
+Forensic mode for read-only analysis:
+```bash
+./verificile.sh -f /media/external-drive
+```
+
+## Output Files
+
+Verificile generates timestamped output files to avoid overwriting previous results:
+
+- `verificile_anomalies_YYYYMMDD_HHMMSS.tsv` - Tab-separated list of all anomalies found
+- `verificile_renamed_YYYYMMDD_HHMMSS.log` - Log of all file rename operations
+
+## Interactive Mode
+
+In interactive mode, Verificile will stop at each anomaly and offer several options:
+
+1. Fix extension (change to the correct extension)
+2. Skip this file
+3. Append extension (keep current name, add correct extension)
+4. Custom rename (enter a new filename)
+
+If the target filename already exists, you'll get additional options for handling the collision.
+
+## Supported MIME Types
+
+Verificile comes pre-configured to recognize many common file types including:
+
+- Images: JPEG, PNG, GIF, BMP, WEBP, TIFF
+- Documents: PDF, TXT, HTML
+- Archives: ZIP, RAR, 7Z, TAR, GZ
+- Media: MP4, WEBM, MKV, MP3, FLAC
+
+The script will also suggest additions for any new MIME types it encounters.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
