@@ -1,0 +1,12 @@
+# Verificile output files
+verificile_anomalies_*.tsv
+verificile_renamed_*.log
+
+# Temporary files
+.tmp*
+*.swp
+*~
+
+# OS specific files
+.DS_Store
+Thumbs.db
